@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-scale="m" data-contrast="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taobao Redesign · Account (Feature 6 — Account, Orders &amp; Accessibility)</title>
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="account.css">
+</head>
+<body>
+<div class="app">
+
+  <a class="skip-link" href="#main">Skip to account content</a>
+
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__right">
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 9.6 6.2 7.5a2.6 2.6 0 0 1 3.6 0L8 9.6ZM8 5.4c-1.5 0-2.9.6-3.9 1.6L2.7 5.6A7.4 7.4 0 0 1 8 3.5c2 0 3.9.8 5.3 2.1l-1.4 1.4A5.4 5.4 0 0 0 8 5.4Zm0-4c-2.6 0-5 1-6.8 2.8L0 2.8A11.4 11.4 0 0 1 8 0c3 0 5.9 1.1 8 2.8l-1.2 1.4A9.4 9.4 0 0 0 8 1.4Z"/></svg>
+      <svg width="26" height="12" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.2"><rect x=".6" y=".6" width="21" height="10.8" rx="3"/><rect x="2.4" y="2.4" width="15" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M23.4 4.2v3.6a2.2 2.2 0 0 0 0-3.6Z" fill="currentColor" stroke="none"/></svg>
+    </span>
+  </div>
+
+  <header class="appbar appbar--ghost">
+    <h1 class="pagehead">Account</h1>
+    <button class="iconbtn" type="button" aria-label="Settings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.2v2.4M12 18.4v2.4M20.8 12h-2.4M5.6 12H3.2M18.2 5.8l-1.7 1.7M7.5 16.5l-1.7 1.7M18.2 18.2l-1.7-1.7M7.5 7.5 5.8 5.8"/></svg>
+    </button>
+  </header>
+
+  <main class="screen" id="main" tabindex="-1">
+    <div class="screen__inner">
+
+      <!-- Identity block: name, masked ID, membership, and sign-in state -->
+      <section class="profile" aria-label="Your profile">
+        <div class="profile__avatar" role="img" aria-label="Avatar: letter T">T</div>
+        <div class="profile__text">
+          <p class="profile__hello">Hey, Tai Man</p>
+          <p class="profile__id">tb8828••••3164 · <span class="profile__since">Member since 2021</span></p>
+          <p class="profile__signed"><span class="dot-ok" aria-hidden="true"></span> Signed in · Hong Kong</p>
+        </div>
+        <a class="btn btn--quiet profile__btn" href="cart.html">Orders</a>
+      </section>
+
+      <!-- Counters, not just icons: memory offloading for the user -->
+      <section class="stats" aria-label="Your shortlists">
+        <a class="stat" href="account.html"><strong>3</strong><span>Coupons</span></a>
+        <a class="stat" href="account.html"><strong>12</strong><span>Wishlist</span></a>
+        <a class="stat" href="account.html"><strong>8</strong><span>Following</span></a>
+        <a class="stat" href="products.html"><strong>24</strong><span>Browsed</span></a>
+      </section>
+
+      <!-- Orders: five statuses with explicit zeroes so absence is visible -->
+      <section class="block" aria-labelledby="orders-h">
+        <div class="block__head">
+          <h2 id="orders-h">My orders</h2>
+          <a class="link" href="account.html">View all</a>
+        </div>
+        <div class="orders">
+          <a class="order" href="cart.html"><span class="order__ico" aria-hidden="true">💳</span><span class="order__label">To pay</span><span class="order__n">1</span></a>
+          <a class="order" href="account.html"><span class="order__ico" aria-hidden="true">📦</span><span class="order__label">To ship</span><span class="order__n is-zero">0</span></a>
+          <a class="order" href="account.html"><span class="order__ico" aria-hidden="true">🚚</span><span class="order__label">To receive</span><span class="order__n">1</span></a>
+          <a class="order" href="account.html"><span class="order__ico" aria-hidden="true">⭐</span><span class="order__label">To review</span><span class="order__n is-zero">0</span></a>
+          <a class="order" href="account.html"><span class="order__ico" aria-hidden="true">↩️</span><span class="order__label">Refunds</span><span class="order__n is-zero">0</span></a>
+        </div>
+      </section>
+
+      <!-- Active parcel: a deterministic four-step indicator (Principle 5) -->
+      <section class="block" aria-labelledby="parcel-h">
+        <div class="block__head">
+          <h2 id="parcel-h">In transit</h2>
+          <span class="tag tag--free">Arrives 12–14 Nov</span>
+        </div>
+        <div class="parcel">
+          <p class="parcel__title">Adjustable Solid Wood Desk <span class="parcel__ord">Order 8828-3164</span></p>
+          <ol class="steps" aria-label="Parcel progress: step 3 of 4, arrived at PolyU hub">
+            <li class="step is-done"><span class="step__dot" aria-hidden="true">✓</span><span class="step__t">Ordered</span><span class="step__n">Step 1 of 4</span></li>
+            <li class="step is-done"><span class="step__dot" aria-hidden="true">✓</span><span class="step__t">Shipped</span><span class="step__n">Step 2 of 4</span></li>
+            <li class="step is-now" aria-current="step"><span class="step__dot" aria-hidden="true">3</span><span class="step__t">At PolyU hub</span><span class="step__n">Step 3 of 4</span></li>
+            <li class="step"><span class="step__dot" aria-hidden="true">4</span><span class="step__t">Ready to collect</span><span class="step__n">Step 4 of 4</span></li>
+          </ol>
+          <p class="parcel__note">Your parcel arrived at the PolyU pickup point on 8 Nov, 14:20. Bring your student card.</p>
+          <a class="btn btn--primary btn--block" href="account.html">Track parcel</a>
+        </div>
+      </section>
+
+      <!-- Account tools: five entries, all 56 px rows -->
+      <section class="block" aria-labelledby="tools-h">
+        <div class="block__head"><h2 id="tools-h">Account tools</h2></div>
+        <div class="group">
+          <a class="row" href="account.html"><span class="row__ico" aria-hidden="true">📍</span><span class="row__grow"><span class="row__title">Address book</span><span class="row__sub">2 saved addresses</span></span><svg class="row__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+          <a class="row" href="account.html"><span class="row__ico" aria-hidden="true">💬</span><span class="row__grow"><span class="row__title">Customer service</span><span class="row__sub">24/7 chat, average reply 40 s</span></span><svg class="row__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+          <a class="row" href="account.html"><span class="row__ico" aria-hidden="true">↩️</span><span class="row__grow"><span class="row__title">Returns &amp; refunds</span><span class="row__sub">15-day free return, 3 steps</span></span><svg class="row__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+          <a class="row" href="account.html"><span class="row__ico" aria-hidden="true">✍️</span><span class="row__grow"><span class="row__title">Reviews I wrote</span><span class="row__sub">7 reviews · 2 helpful badges</span></span><svg class="row__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+          <a class="row" href="account.html"><span class="row__ico" aria-hidden="true">🎟️</span><span class="row__grow"><span class="row__title">Coupons</span><span class="row__sub">3 available, 1 expiring soon</span></span><svg class="row__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></a>
+        </div>
+      </section>
+
+      <!-- ============ ACCESSIBILITY & PREFERENCES (Feature 6) ============ -->
+      <section class="block" aria-labelledby="a11y-h">
+        <div class="block__head">
+          <h2 id="a11y-h">Accessibility &amp; display</h2>
+          <span class="tag tag--ship">Saves instantly</span>
+        </div>
+
+        <div class="group">
+          <div class="row row--stack">
+            <div class="row__grow">
+              <p class="row__title" id="sizeLabel">Text size</p>
+              <p class="row__sub">Scales every screen up to 137% with reflow, never clipping</p>
+            </div>
+            <div class="segmented" role="group" aria-labelledby="sizeLabel">
+              <button type="button" data-scale="s" aria-pressed="false">A−</button>
+              <button type="button" data-scale="m" aria-pressed="true">A</button>
+              <button type="button" data-scale="l" aria-pressed="false">A+</button>
+              <button type="button" data-scale="xl" aria-pressed="false">A++</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="row__grow">
+              <p class="row__title">High contrast</p>
+              <p class="row__sub">Increases text and border contrast to at least 7:1</p>
+            </div>
+            <span class="switch"><input type="checkbox" id="contrast" aria-label="High contrast mode"></span>
+          </div>
+
+          <div class="row">
+            <div class="row__grow">
+              <p class="row__title">Reduce motion</p>
+              <p class="row__sub">Removes banner carousels and transition animations</p>
+            </div>
+            <span class="switch"><input type="checkbox" id="motion" aria-label="Reduce motion"></span>
+          </div>
+
+          <div class="row">
+            <div class="row__grow">
+              <p class="row__title">Screen-reader labels</p>
+              <p class="row__sub">Every product image and icon button has a text label · always on</p>
+            </div>
+            <span class="tag tag--free">On</span>
+          </div>
+
+          <div class="row">
+            <div class="row__grow">
+              <p class="row__title">Language</p>
+              <p class="row__sub">English (Hong Kong)</p>
+            </div>
+            <button class="btn btn--quiet row__btn" type="button">Change</button>
+          </div>
+        </div>
+
+        <p class="a11y-note">Verified in the prototype: 48 px minimum touch targets, 4.5:1 body-text contrast, full keyboard tab order and text reflow to 137%.</p>
+      </section>
+
+      <p class="appnote">Taobao redesign prototype · version 10.2.0 · <a class="link-strong" href="account.html">Accessibility statement</a></p>
+    </div>
+  </main>
+
+  <nav class="tabbar" aria-label="Main navigation">
+    <a class="tabbar__item" href="home.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 10.6 12 3.5l9 7.1V20a1 1 0 0 1-1 1h-5v-6.5H10V21H4a1 1 0 0 1-1-1Z"/></svg>
+      Home
+    </a>
+    <a class="tabbar__item" href="category.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>
+      Category
+    </a>
+    <a class="tabbar__item" href="search.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+      Search
+    </a>
+    <a class="tabbar__item" href="cart.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 4h2.2l2.3 11.2A2 2 0 0 0 9.5 17h8.7a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>
+      Cart
+      <span class="badge-count" data-cart-badge aria-hidden="true">1</span>
+    </a>
+    <a class="tabbar__item" href="account.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.4 8-6.4S20 17 20 21"/></svg>
+      Account
+    </a>
+  </nav>
+</div>
+
+<script>
+(function () {
+  var n = 1;
+  try { var s = localStorage.getItem('tb_cart_count'); if (s !== null) n = parseInt(s, 10); } catch (e) {}
+  document.querySelectorAll('[data-cart-badge]').forEach(function (el) { el.textContent = String(n); el.hidden = n === 0; });
+
+  var root = document.documentElement;
+
+  /* text size: persists between screens */
+  var KEY = 'tb_scale';
+  function applyScale(v) {
+    root.setAttribute('data-scale', v);
+    document.querySelectorAll('.segmented [data-scale]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-scale') === v));
+    });
+    try { localStorage.setItem(KEY, v); } catch (e) {}
+  }
+  try { var saved = localStorage.getItem('tb_scale'); if (saved) applyScale(saved); } catch (e) {}
+  document.querySelectorAll('.segmented [data-scale]').forEach(function (b) {
+    b.addEventListener('click', function () { applyScale(b.getAttribute('data-scale')); });
+  });
+
+  document.getElementById('contrast').addEventListener('change', function () {
+    root.setAttribute('data-contrast', this.checked ? 'high' : 'normal');
+  });
+  document.getElementById('motion').addEventListener('change', function () {
+    root.style.setProperty('--motion', this.checked ? '0' : '1');
+  });
+})();
+</script>
+</body>
+</html>

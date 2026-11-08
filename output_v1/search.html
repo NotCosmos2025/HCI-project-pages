@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-scale="m" data-contrast="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taobao Redesign · Search (Feature 2 — Guided Query Formulation)</title>
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="search.css">
+</head>
+<body>
+<div class="app">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__right">
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 9.6 6.2 7.5a2.6 2.6 0 0 1 3.6 0L8 9.6ZM8 5.4c-1.5 0-2.9.6-3.9 1.6L2.7 5.6A7.4 7.4 0 0 1 8 3.5c2 0 3.9.8 5.3 2.1l-1.4 1.4A5.4 5.4 0 0 0 8 5.4Zm0-4c-2.6 0-5 1-6.8 2.8L0 2.8A11.4 11.4 0 0 1 8 0c3 0 5.9 1.1 8 2.8l-1.2 1.4A9.4 9.4 0 0 0 8 1.4Z"/></svg>
+      <svg width="26" height="12" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.2"><rect x=".6" y=".6" width="21" height="10.8" rx="3"/><rect x="2.4" y="2.4" width="15" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M23.4 4.2v3.6a2.2 2.2 0 0 0 0-3.6Z" fill="currentColor" stroke="none"/></svg>
+    </span>
+  </div>
+
+  <!-- ================= APP BAR ================= -->
+  <header class="appbar appbar--search">
+    <a class="iconbtn" href="home.html" aria-label="Go back to Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg>
+    </a>
+
+    <div class="searchbox" role="search">
+      <svg class="searchbox__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+      <label class="sr-only" for="q">Search products, brands or photo</label>
+      <input id="q" class="searchbox__input" type="search" value="tablet holder"
+             placeholder="Search products, brands or photo" autocomplete="off"
+             aria-describedby="q-hint" aria-controls="suggestions" aria-expanded="true">
+      <button class="searchbox__clear" type="button" id="clearQ" aria-label="Clear search text">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <button class="searchbox__cam" type="button" aria-label="Search with an image instead of words">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 8h2.2l1.4-2h8.8l1.4 2H20a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/><circle cx="12" cy="13" r="3.4"/></svg>
+      </button>
+    </div>
+
+    <button class="textbtn" type="button" id="cancelBtn">Cancel</button>
+  </header>
+
+  <main class="screen" id="main" tabindex="-1">
+    <div class="screen__inner">
+
+      <!-- Scope selector: labelled so the user knows a tab changes the search area, not the results -->
+      <section class="scope" aria-labelledby="scope-h">
+        <h2 id="scope-h" class="minihead">Search in</h2>
+        <div class="chips chips--tight" role="group" aria-labelledby="scope-h">
+          <button class="chip is-on" type="button" aria-pressed="true">All departments</button>
+          <button class="chip" type="button" aria-pressed="false">Women</button>
+          <button class="chip" type="button" aria-pressed="false">Home</button>
+          <button class="chip" type="button" aria-pressed="false">Men</button>
+          <button class="chip" type="button" aria-pressed="false">Sports</button>
+        </div>
+      </section>
+
+      <!-- Live query suggestions: incremental query formulation (Principle 6) -->
+      <section id="suggestions" class="suggest" aria-labelledby="sug-h">
+        <h2 id="sug-h" class="sr-only">Suggested searches</h2>
+        <ul class="suggest__list" id="sugList">
+          <li><button class="suggest__item" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg><span id="sug1"><mark>tablet holder</mark> for bed</span><span class="suggest__n">2.4k items</span></button></li>
+          <li><button class="suggest__item" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg><span id="sug2"><mark>tablet holder</mark> clamp, metal</span><span class="suggest__n">1.1k items</span></button></li>
+          <li><button class="suggest__item" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg><span id="sug3"><mark>tablet holder</mark> stand, adjustable</span><span class="suggest__n">960 items</span></button></li>
+        </ul>
+      </section>
+
+      <!-- Recent searches: each entry removable, plus an explicit global clear -->
+      <section class="recent" aria-labelledby="recent-h">
+        <div class="sect-head sect-head--tight">
+          <h2 id="recent-h">Recent searches</h2>
+          <button class="linkbtn" type="button" id="clearAll">Clear all</button>
+        </div>
+        <ul class="chips chips--tight" id="history">
+          <li class="chip chip--removable">Broom
+            <button class="chip__x" type="button" aria-label="Remove Broom from recent searches">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </li>
+          <li class="chip chip--removable">Hoodie
+            <button class="chip__x" type="button" aria-label="Remove Hoodie from recent searches">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </li>
+          <li class="chip chip--removable">Writing tablet
+            <button class="chip__x" type="button" aria-label="Remove Writing tablet from recent searches">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </li>
+          <li class="chip chip--removable">Frozen fries
+            <button class="chip__x" type="button" aria-label="Remove Frozen fries from recent searches">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </li>
+          <li class="chip chip--removable">Cup
+            <button class="chip__x" type="button" aria-label="Remove Cup from recent searches">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </li>
+          <li class="chip chip--removable">Walking machine
+            <button class="chip__x" type="button" aria-label="Remove Walking machine from recent searches">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+            </button>
+          </li>
+        </ul>
+        <p class="empty-hint" id="histEmpty" hidden>No recent searches. Your history stays on this device.</p>
+      </section>
+
+      <!-- Trending: different surface + rank numbers, so it cannot be confused with history -->
+      <section class="trend" aria-labelledby="trend-h">
+        <div class="sect-head sect-head--tight">
+          <div>
+            <h2 id="trend-h">Trending in Hong Kong</h2>
+            <p>Updated 08:00 today</p>
+          </div>
+          <span class="tag tag--ship">Live</span>
+        </div>
+        <ol class="trend__list">
+          <li><button class="trend__row" type="button"><span class="trend__rank is-top">1</span><span class="trend__word">tablet holder</span><span class="trend__delta is-up">▲ 42% searches</span><span class="tag tag--off">Top</span></button></li>
+          <li><button class="trend__row" type="button"><span class="trend__rank is-top">2</span><span class="trend__word">tablet infinix</span><span class="trend__delta is-up">▲ 31% searches</span><span class="tag tag--off">Top</span></button></li>
+          <li><button class="trend__row" type="button"><span class="trend__rank">3</span><span class="trend__word">brooks</span><span class="trend__delta is-up">▲ 18%</span></button></li>
+          <li><button class="trend__row" type="button"><span class="trend__rank">4</span><span class="trend__word">bathroom storage</span><span class="trend__delta is-flat">Steady</span></button></li>
+          <li><button class="trend__row" type="button"><span class="trend__rank">5</span><span class="trend__word">tablet laptop</span><span class="trend__delta is-up">▲ 9%</span></button></li>
+          <li><button class="trend__row" type="button"><span class="trend__rank">6</span><span class="trend__word">table cutter</span><span class="trend__delta is-down">▼ 4%</span></button></li>
+        </ol>
+      </section>
+
+      <!-- Browse by category: a parallel route that does not need typing -->
+      <section class="browse" aria-labelledby="browse-h">
+        <div class="sect-head sect-head--tight">
+          <div>
+            <h2 id="browse-h">Browse instead</h2>
+            <p>No typing needed</p>
+          </div>
+          <a class="link" href="category.html">All categories</a>
+        </div>
+        <div class="chips chips--tight">
+          <a class="chip" href="products.html">Children’s furniture</a>
+          <a class="chip" href="products.html">Men’s hoodies</a>
+          <a class="chip" href="products.html">Home decor</a>
+          <a class="chip" href="products.html">Women’s T-shirts</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Sticky action bar: labelled with the exact query (semantic priming) and
+       positioned above the on-screen keyboard. -->
+  <div class="actionbar actionbar--search">
+    <p class="qecho" id="q-hint">Results are ranked by relevance to your text.</p>
+    <a class="btn btn--primary btn--block" id="goBtn" href="products.html">Search for “tablet holder”</a>
+  </div>
+
+  <nav class="tabbar" aria-label="Main navigation">
+    <a class="tabbar__item" href="home.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 10.6 12 3.5l9 7.1V20a1 1 0 0 1-1 1h-5v-6.5H10V21H4a1 1 0 0 1-1-1Z"/></svg>
+      Home
+    </a>
+    <a class="tabbar__item" href="category.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>
+      Category
+    </a>
+    <a class="tabbar__item" href="search.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+      Search
+    </a>
+    <a class="tabbar__item" href="cart.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 4h2.2l2.3 11.2A2 2 0 0 0 9.5 17h8.7a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>
+      Cart
+      <span class="badge-count" data-cart-badge aria-hidden="true">1</span>
+    </a>
+    <a class="tabbar__item" href="account.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.4 8-6.4S20 17 20 21"/></svg>
+      Account
+    </a>
+  </nav>
+</div>
+
+<script>
+(function () {
+  var KEY = 'tb_cart_count', n = 1;
+  try { if (localStorage.getItem(KEY) !== null) n = parseInt(localStorage.getItem(KEY), 10); } catch (e) {}
+  document.querySelectorAll('[data-cart-badge]').forEach(function (el) {
+    el.textContent = String(n); el.hidden = n === 0;
+  });
+
+  var input = document.getElementById('q');
+  var go = document.getElementById('goBtn');
+  var sug = document.getElementById('suggestions');
+  var hist = document.getElementById('history');
+  var histEmpty = document.getElementById('histEmpty');
+
+  function sync() {
+    var v = input.value.trim();
+    go.textContent = v ? 'Search for “' + v + '”' : 'Type something to search';
+    if (!v) { go.setAttribute('aria-disabled', 'true'); go.removeAttribute('href'); }
+    else { go.removeAttribute('aria-disabled'); go.setAttribute('href', 'products.html'); }
+    var base = v.toLowerCase();
+    document.querySelectorAll('#sugList span[id^="sug"]').forEach(function (s, i) {
+      var tail = [' for bed', ' clamp, metal', ' stand, adjustable'][i];
+      s.innerHTML = v ? '<mark>' + v.replace(/[<>&]/g, '') + '</mark>' + tail : '';
+    });
+    sug.hidden = !v;
+  }
+  input.addEventListener('input', sync);
+  document.getElementById('clearQ').addEventListener('click', function () { input.value = ''; sync(); input.focus(); });
+  document.getElementById('cancelBtn').addEventListener('click', function () { location.href = 'home.html'; });
+  document.getElementById('clearAll').addEventListener('click', function () {
+    hist.innerHTML = ''; hist.hidden = true; histEmpty.hidden = false;
+  });
+  hist.addEventListener('click', function (e) {
+    var x = e.target.closest('.chip__x'); if (!x) return;
+    x.closest('li').remove();
+    if (!hist.querySelector('li')) { hist.hidden = true; histEmpty.hidden = false; }
+  });
+  sync();
+})();
+</script>
+</body>
+</html>

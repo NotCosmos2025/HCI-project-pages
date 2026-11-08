@@ -1,0 +1,178 @@
+/* ==========================================================================
+   search.css — Feature 2 · Guided query formulation
+   Addresses: lexical ambiguity (history vs trending vs scope), reversible
+   destructive actions, keyboard-aware primary action, 48 px targets.
+   ========================================================================== */
+
+.appbar--search { padding: 4px 8px 8px; gap: 6px; }
+
+.searchbox {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: var(--tap);
+  padding: 0 4px 0 12px;
+  background: var(--surface);
+  border: 2px solid var(--brand-strong);
+  border-radius: 999px;
+}
+.searchbox__icon { width: 18px; height: 18px; color: var(--ink-2); flex: 0 0 auto; }
+.searchbox__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 44px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: .9375rem;
+  color: var(--ink);
+  font-family: inherit;
+}
+.searchbox__input::-webkit-search-cancel-button { display: none; }
+.searchbox__clear,
+.searchbox__cam {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.searchbox__clear svg { width: 14px; height: 14px; }
+.searchbox__cam svg { width: 20px; height: 20px; }
+.searchbox__clear:active, .searchbox__cam:active { background: var(--canvas); }
+
+.textbtn {
+  flex: 0 0 auto;
+  min-height: var(--tap);
+  padding: 0 8px;
+  border: 0;
+  background: transparent;
+  color: var(--brand-ink);
+  font-size: .875rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ---------- section labels -------------------------------------------- */
+.minihead {
+  margin: 0;
+  padding: 14px var(--pad) 8px;
+  font-size: .8125rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.sect-head--tight { padding-top: 18px; padding-bottom: 8px; }
+.sect-head--tight h2 { font-size: 1rem; }
+.chips--tight { display: flex; flex-wrap: wrap; gap: var(--gap); padding: 0 var(--pad); list-style: none; margin: 0; }
+.chips--tight .chip { min-height: 48px; }
+
+.linkbtn {
+  min-height: var(--tap);
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: var(--brand-ink);
+  font-size: .875rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- suggestions ------------------------------------------------ */
+.suggest { padding-top: 4px; }
+.suggest__list { list-style: none; margin: 0; padding: 0; background: var(--surface); }
+.suggest__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 var(--pad);
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  text-align: left;
+  font-size: .9375rem;
+  cursor: pointer;
+}
+.suggest__item svg { width: 18px; height: 18px; color: var(--ink-3); flex: 0 0 auto; }
+.suggest__item mark { background: transparent; color: var(--brand-ink); font-weight: 700; }
+.suggest__n { margin-left: auto; font-size: .75rem; color: var(--ink-2); }
+
+/* ---------- recent searches ------------------------------------------- */
+.chip--removable { padding-right: 4px; gap: 2px; }
+.chip__x { color: var(--ink-2); }
+.empty-hint {
+  padding: 12px var(--pad) 4px;
+  margin: 0;
+  font-size: .875rem;
+  color: var(--ink-2);
+}
+
+/* ---------- trending: white card rows, ranks, textual trend arrows ----- */
+.trend { padding-top: 4px; }
+.trend__list {
+  list-style: none;
+  margin: 0 var(--pad);
+  padding: 4px 0;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-card);
+  counter-reset: none;
+}
+.trend__row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  min-height: 52px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.trend__list li + li .trend__row { border-top: 1px solid var(--line); }
+.trend__rank {
+  width: 24px;
+  flex: 0 0 24px;
+  font-size: .875rem;
+  font-weight: 700;
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+.trend__rank.is-top { color: var(--brand-ink); }
+.trend__word { flex: 1 1 auto; min-width: 0; font-size: .9375rem; font-weight: 500; }
+.trend__delta { font-size: .75rem; font-weight: 600; white-space: nowrap; }
+.trend__delta.is-up { color: var(--price); }
+.trend__delta.is-flat { color: var(--ink-2); }
+.trend__delta.is-down { color: var(--ok); }
+
+/* ---------- sticky search action -------------------------------------- */
+.actionbar--search {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  padding-top: 8px;
+}
+.qecho { margin: 0; font-size: .75rem; color: var(--ink-2); }
+.actionbar--search .btn { min-height: 52px; font-size: 1rem; }
+.actionbar--search .btn[aria-disabled="true"] {
+  background: var(--canvas-2);
+  border-color: var(--line);
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.browse { padding-bottom: 8px; }

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-scale="m" data-contrast="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taobao Redesign · Home (Feature 1 — Discovery Home)</title>
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+<div class="app">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- status bar (decorative, hidden from assistive tech) -->
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__right">
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 9.6 6.2 7.5a2.6 2.6 0 0 1 3.6 0L8 9.6ZM8 5.4c-1.5 0-2.9.6-3.9 1.6L2.7 5.6A7.4 7.4 0 0 1 8 3.5c2 0 3.9.8 5.3 2.1l-1.4 1.4A5.4 5.4 0 0 0 8 5.4Zm0-4c-2.6 0-5 1-6.8 2.8L0 2.8A11.4 11.4 0 0 1 8 0c3 0 5.9 1.1 8 2.8l-1.2 1.4A9.4 9.4 0 0 0 8 1.4Z"/></svg>
+      <svg width="26" height="12" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.2"><rect x=".6" y=".6" width="21" height="10.8" rx="3"/><rect x="2.4" y="2.4" width="15" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M23.4 4.2v3.6a2.2 2.2 0 0 0 0-3.6Z" fill="currentColor" stroke="none"/></svg>
+    </span>
+  </div>
+
+  <!-- ================= APP BAR ================= -->
+  <header class="appbar">
+    <span class="wordmark" aria-label="Taobao">Taobao</span>
+
+    <!-- entry point to search.html (Feature 2) -->
+    <a class="searchfield" href="search.html" aria-label="Search Taobao. Opens search screen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+      <span>Search products, brands or photo</span>
+    </a>
+
+    <button class="iconbtn" type="button" aria-label="Scan a product barcode or image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/></svg>
+    </button>
+
+    <button class="iconbtn" type="button" aria-label="Messages, 3 unread">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H8l-4 3v-4.4A8 8 0 1 1 21 12Z"/></svg>
+      <span class="badge-count" aria-hidden="true">3</span>
+    </button>
+  </header>
+
+  <!-- ================= SCROLLABLE CONTENT ================= -->
+  <main class="screen" id="main" tabindex="-1">
+    <div class="screen__inner">
+
+      <!-- Principle 2: four channels only (Miller 7±2), 44 px targets -->
+      <nav class="channels" aria-label="Home channels">
+        <button class="channels__item is-on" type="button" aria-pressed="true">For You</button>
+        <button class="channels__item" type="button" aria-pressed="false">Tao Picks</button>
+        <button class="channels__item" type="button" aria-pressed="false">Fashion</button>
+        <button class="channels__item" type="button" aria-pressed="false">Sale</button>
+      </nav>
+
+      <!-- Hero: one editorial message, explicit CTA, non-colour-only carousel state -->
+      <section class="hero" aria-label="Featured promotion">
+        <div class="hero__body">
+          <span class="tag tag--off">11.11 Mega Sale</span>
+          <h1 class="hero__title">Up to 15% off<br>Home &amp; Living</h1>
+          <p class="hero__sub">Sale ends in 6 days · free shipping over HK$99</p>
+          <a class="btn btn--primary hero__cta" href="products.html">Shop the sale</a>
+        </div>
+        <div class="hero__nav">
+          <span class="hero__count" aria-live="polite">1 of 3</span>
+          <div class="hero__dots" role="group" aria-label="Banner 1 of 3">
+            <span class="dot is-on"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+          <button class="hero__arrow" type="button" aria-label="Next promotion">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Principle 2 + 4: coupons framed as explicit, positive, quantified offers -->
+      <section aria-labelledby="coupons-h">
+        <div class="sect-head">
+          <div>
+            <h2 id="coupons-h">Coupons you can use</h2>
+            <p>One tap collects the coupon for this store</p>
+          </div>
+          <a class="link" href="account.html">My coupons</a>
+        </div>
+        <ul class="coupons">
+          <li class="coupon">
+            <div class="coupon__val"><strong>HK$10</strong><span>off</span></div>
+            <div class="coupon__cond">When you spend HK$100 or more</div>
+            <button class="btn coupon__btn" type="button">Collect</button>
+          </li>
+          <li class="coupon">
+            <div class="coupon__val"><strong>HK$50</strong><span>off</span></div>
+            <div class="coupon__cond">When you spend HK$250 or more</div>
+            <button class="btn coupon__btn" type="button">Collect</button>
+          </li>
+          <li class="coupon">
+            <div class="coupon__val"><strong>HK$5</strong><span>off</span></div>
+            <div class="coupon__cond">No minimum spend</div>
+            <button class="btn coupon__btn" type="button" disabled>Collected ✓</button>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Principle 3: four equal tiles, one scan line, text label under every image -->
+      <section aria-labelledby="browse-h">
+        <div class="sect-head">
+          <div>
+            <h2 id="browse-h">Browse categories</h2>
+            <p>Jump straight to a department</p>
+          </div>
+          <a class="link" href="category.html">All categories</a>
+        </div>
+        <div class="tiles">
+          <a class="tile" href="category.html">
+            <span class="tile__art tile__art--a" role="img" aria-label="Hobby and craft supplies">🧩</span>
+            <span class="tile__name">Hobbies</span>
+            <span class="tile__note">Up to 15% off</span>
+          </a>
+          <a class="tile" href="category.html">
+            <span class="tile__art tile__art--b" role="img" aria-label="Home and living products">🪴</span>
+            <span class="tile__name">Home</span>
+            <span class="tile__note">1,284 items</span>
+          </a>
+          <a class="tile" href="category.html">
+            <span class="tile__art tile__art--c" role="img" aria-label="Smart home devices">💡</span>
+            <span class="tile__name">Smart tech</span>
+            <span class="tile__note">Ships in 24 h</span>
+          </a>
+          <a class="tile" href="products.html">
+            <span class="tile__art tile__art--d" role="img" aria-label="Mega sale banner">🏷️</span>
+            <span class="tile__name">Mega sale</span>
+            <span class="tile__note">Ends 11 Nov</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Principle 3 + 2: consistent 2-column cards, five attributes each -->
+      <section aria-labelledby="feed-h">
+        <div class="sect-head">
+          <div>
+            <h2 id="feed-h">Recommended for you</h2>
+            <p>Because you viewed night lights and storage racks</p>
+          </div>
+          <a class="link" href="products.html">See all</a>
+        </div>
+
+        <div class="pgrid">
+          <article class="pcard">
+            <div class="pcard__media pcard__media--a" role="img" aria-label="Stickerless magnetic speed cube on a grey mat">🧩
+              <span class="pcard__flag">20K+ sold</span>
+            </div>
+            <div class="pcard__body">
+              <h3 class="pcard__title">GAN 356M Magnetic Speed Cube, Stickerless</h3>
+              <p class="pcard__price"><span class="price">HK$47.72</span><span class="was">HK$59.90</span><span class="tag tag--off">20% off</span></p>
+              <p class="pcard__meta"><span class="star">★ 4.8</span><span>(2,341)</span></p>
+              <div class="pcard__row">
+                <span class="tag tag--free">Free shipping</span>
+                <button class="addbtn" type="button" aria-label="Add GAN 356M Magnetic Speed Cube to cart">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard">
+            <div class="pcard__media pcard__media--b" role="img" aria-label="Artificial bamboo plant in a plastic pulp pot">🪴
+              <span class="pcard__flag">2K+ sold</span>
+            </div>
+            <div class="pcard__body">
+              <h3 class="pcard__title">Artificial Bamboo Plant with Plastic Pulp Pot</h3>
+              <p class="pcard__price"><span class="price">HK$14.21</span><span class="tag tag--off">15% off</span></p>
+              <p class="pcard__meta"><span class="star">★ 4.6</span><span>(887)</span></p>
+              <div class="pcard__row">
+                <span class="tag tag--free">Free shipping</span>
+                <button class="addbtn" type="button" aria-label="Add Artificial Bamboo Plant to cart">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard">
+            <div class="pcard__media pcard__media--c" role="img" aria-label="Foldable trolley storage rack in a living room">🛒
+              <span class="pcard__flag">5K+ sold</span>
+            </div>
+            <div class="pcard__body">
+              <h3 class="pcard__title">Installation-Free Foldable Trolley Storage Rack</h3>
+              <p class="pcard__price"><span class="price">HK$35.02</span><span class="was">HK$55.60</span><span class="tag tag--off">37% off</span></p>
+              <p class="pcard__meta"><span class="star">★ 4.7</span><span>(4,102)</span></p>
+              <div class="pcard__row">
+                <span class="tag tag--ship">Ships in 24 h</span>
+                <button class="addbtn" type="button" aria-label="Add Foldable Trolley Storage Rack to cart">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="pcard">
+            <div class="pcard__media pcard__media--d" role="img" aria-label="Rechargeable motion-sensor night light">💡
+              <span class="pcard__flag">10K+ sold</span>
+            </div>
+            <div class="pcard__body">
+              <h3 class="pcard__title">Human Body Sensor Night Light, Rechargeable</h3>
+              <p class="pcard__price"><span class="price">HK$7.38</span><span class="was">HK$9.34</span><span class="tag tag--off">21% off</span></p>
+              <p class="pcard__meta"><span class="star">★ 4.7</span><span>(9,455)</span></p>
+              <div class="pcard__row">
+                <span class="tag tag--free">Free shipping</span>
+                <button class="addbtn" type="button" aria-label="Add Human Body Sensor Night Light to cart">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="hint">Prices include tax. Delivery estimates appear on each product page before you pay.</p>
+      </section>
+    </div>
+  </main>
+
+  <!-- ================= BOTTOM NAVIGATION (shared across all six screens) ================= -->
+  <nav class="tabbar" aria-label="Main navigation">
+    <a class="tabbar__item" href="home.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 10.6 12 3.5l9 7.1V20a1 1 0 0 1-1 1h-5v-6.5H10V21H4a1 1 0 0 1-1-1Z"/></svg>
+      Home
+    </a>
+    <a class="tabbar__item" href="category.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>
+      Category
+    </a>
+    <a class="tabbar__item" href="search.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+      Search
+    </a>
+    <a class="tabbar__item" href="cart.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 4h2.2l2.3 11.2A2 2 0 0 0 9.5 17h8.7a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>
+      Cart
+      <span class="badge-count" data-cart-badge aria-hidden="true">1</span>
+    </a>
+    <a class="tabbar__item" href="account.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.4 8-6.4S20 17 20 21"/></svg>
+      Account
+    </a>
+  </nav>
+</div>
+
+<script>
+/* Cart badge state is shared by every screen (Principle 5 — state integrity). */
+(function () {
+  var KEY = 'tb_cart_count', n = 1;
+  try { if (localStorage.getItem(KEY) !== null) n = parseInt(localStorage.getItem(KEY), 10); } catch (e) {}
+  function paint() {
+    document.querySelectorAll('[data-cart-badge]').forEach(function (el) {
+      el.textContent = String(n);
+      el.hidden = n === 0;
+    });
+  }
+  paint();
+  document.querySelectorAll('.addbtn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      n += 1;
+      try { localStorage.setItem(KEY, String(n)); } catch (e) {}
+      paint();
+      b.setAttribute('aria-label', b.getAttribute('aria-label').replace('Add ', 'Added ') + ' — cart now has ' + n + ' item' + (n === 1 ? '' : 's'));
+      b.style.background = 'var(--brand-strong)';
+      b.style.color = '#fff';
+    });
+  });
+  if (location.search.indexOf('scroll') > -1) {
+    var scr = document.querySelector('.screen');
+    scr.scrollTop = 780;
+  }
+  document.querySelectorAll('.channels__item').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.querySelectorAll('.channels__item').forEach(function (o) { o.classList.remove('is-on'); o.setAttribute('aria-pressed', 'false'); });
+      t.classList.add('is-on'); t.setAttribute('aria-pressed', 'true');
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" data-scale="m" data-contrast="normal">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taobao Redesign · Category (Feature 4 — Category Wayfinding)</title>
+<link rel="stylesheet" href="styles/base.css">
+<link rel="stylesheet" href="category.css">
+</head>
+<body>
+<div class="app">
+
+  <a class="skip-link" href="#main">Skip to category content</a>
+
+  <div class="statusbar" aria-hidden="true">
+    <span>9:41</span>
+    <span class="statusbar__right">
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="currentColor"><path d="M8 9.6 6.2 7.5a2.6 2.6 0 0 1 3.6 0L8 9.6ZM8 5.4c-1.5 0-2.9.6-3.9 1.6L2.7 5.6A7.4 7.4 0 0 1 8 3.5c2 0 3.9.8 5.3 2.1l-1.4 1.4A5.4 5.4 0 0 0 8 5.4Zm0-4c-2.6 0-5 1-6.8 2.8L0 2.8A11.4 11.4 0 0 1 8 0c3 0 5.9 1.1 8 2.8l-1.2 1.4A9.4 9.4 0 0 0 8 1.4Z"/></svg>
+      <svg width="26" height="12" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1.2"><rect x=".6" y=".6" width="21" height="10.8" rx="3"/><rect x="2.4" y="2.4" width="15" height="7.2" rx="1.6" fill="currentColor" stroke="none"/><path d="M23.4 4.2v3.6a2.2 2.2 0 0 0 0-3.6Z" fill="currentColor" stroke="none"/></svg>
+    </span>
+  </div>
+
+  <!-- entry path back to search (shared IA) -->
+  <header class="appbar">
+    <a class="searchfield" href="search.html" aria-label="Search Taobao. Opens search screen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+      <span>Search products, brands or photo</span>
+    </a>
+    <button class="iconbtn" type="button" aria-label="Scan a product barcode or image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M4 12h16"/></svg>
+    </button>
+  </header>
+
+  <!-- Breadcrumb gives instant position context before any scrolling -->
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="home.html">Home</a>
+    <span class="sep" aria-hidden="true">›</span>
+    <span aria-current="page">Home &amp; Living</span>
+  </nav>
+
+  <main class="screen" id="main" tabindex="-1">
+    <div class="cat">
+
+      <!-- Left rail: 7 top-level departments, one scrolling column, active state
+           marked by position + weight + text label, not colour alone -->
+      <nav class="rail" aria-label="Departments">
+        <button class="rail__item" type="button" aria-pressed="false">For you</button>
+        <button class="rail__item" type="button" aria-pressed="false">Fashion</button>
+        <button class="rail__item is-on" type="button" aria-pressed="true" aria-describedby="rail-hint">Home &amp; Living</button>
+        <button class="rail__item" type="button" aria-pressed="false">Electronics</button>
+        <button class="rail__item" type="button" aria-pressed="false">Beauty &amp; Care</button>
+        <button class="rail__item" type="button" aria-pressed="false">Kids &amp; Baby</button>
+        <button class="rail__item" type="button" aria-pressed="false">Sports</button>
+      </nav>
+
+      <!-- Right pane for the selected department -->
+      <div class="pane">
+        <div class="pane__head">
+          <h1>Home &amp; Living</h1>
+          <p id="rail-hint">6 sub-categories · 1,284 items</p>
+        </div>
+
+        <section aria-labelledby="sub-h">
+          <h2 id="sub-h" class="pane__h2">Sub-categories</h2>
+          <div class="subtiles">
+            <a class="subtile" href="products.html"><span class="subtile__art" role="img" aria-label="Bedding and pillows">🛏️</span><span class="subtile__name">Bedding</span><span class="subtile__n">286</span></a>
+            <a class="subtile" href="products.html"><span class="subtile__art" role="img" aria-label="Lamps and ceiling lights">💡</span><span class="subtile__name">Lighting</span><span class="subtile__n">312</span></a>
+            <a class="subtile" href="products.html"><span class="subtile__art" role="img" aria-label="Racks, boxes and trolleys">🧺</span><span class="subtile__name">Storage</span><span class="subtile__n">198</span></a>
+            <a class="subtile" href="products.html"><span class="subtile__art" role="img" aria-label="Wall decor and photo frames">🖼️</span><span class="subtile__name">Décor</span><span class="subtile__n">274</span></a>
+            <a class="subtile" href="products.html"><span class="subtile__art" role="img" aria-label="Cookware and tableware">🍳</span><span class="subtile__name">Kitchen</span><span class="subtile__n">141</span></a>
+            <a class="subtile" href="products.html"><span class="subtile__art" role="img" aria-label="Towels and bathroom accessories">🛁</span><span class="subtile__name">Bath</span><span class="subtile__n">73</span></a>
+          </div>
+        </section>
+
+        <section aria-labelledby="need-h">
+          <h2 id="need-h" class="pane__h2">Shop by need</h2>
+          <div class="chips chips--pad">
+            <a class="chip" href="products.html">Free shipping</a>
+            <a class="chip" href="products.html">Under HK$50</a>
+            <a class="chip" href="products.html">4.5★ &amp; up</a>
+            <a class="chip" href="products.html">Ships in 24 h</a>
+          </div>
+        </section>
+
+        <section aria-labelledby="best-h">
+          <div class="pane__headrow">
+            <h2 id="best-h" class="pane__h2">Bestsellers in Décor</h2>
+            <a class="link" href="products.html">See all</a>
+          </div>
+
+          <div class="pgrid pgrid--one">
+            <article class="pcard">
+              <div class="pcard__media pcard__media--b" role="img" aria-label="Simulated flowers in a plastic pulp pot">🪴
+                <span class="pcard__flag">2K+ sold</span>
+              </div>
+              <div class="pcard__body">
+                <h3 class="pcard__title">Simulated Flower Potted Plants, Plastic Pulp Pots</h3>
+                <p class="pcard__price"><span class="price">HK$14.21</span><span class="tag tag--off">15% off</span></p>
+                <p class="pcard__meta"><span class="star">★ 4.6</span><span>(1,204)</span></p>
+                <div class="pcard__row">
+                  <span class="tag tag--free">Free shipping</span>
+                  <button class="addbtn" type="button" aria-label="Add Simulated Flower Potted Plants to cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <article class="pcard">
+              <div class="pcard__media pcard__media--c" role="img" aria-label="Wall-mounted photo frame with sticky backing">🖼️
+                <span class="pcard__flag">400+ sold</span>
+              </div>
+              <div class="pcard__body">
+                <h3 class="pcard__title">Wall-Mounted Photo Frame, No Drilling Required</h3>
+                <p class="pcard__price"><span class="price">HK$18.23</span><span class="tag tag--off">10% off</span></p>
+                <p class="pcard__meta"><span class="star">★ 4.4</span><span>(412)</span></p>
+                <div class="pcard__row">
+                  <span class="tag tag--ship">Tmall</span>
+                  <button class="addbtn" type="button" aria-label="Add Wall-Mounted Photo Frame to cart">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <a class="btn btn--primary btn--block pane__all" href="products.html">View all 1,284 items in Home &amp; Living</a>
+        <p class="hint pane__note">Tapping a sub-category opens results already filtered to it — you can remove that filter from the results header.</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="tabbar" aria-label="Main navigation">
+    <a class="tabbar__item" href="home.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 10.6 12 3.5l9 7.1V20a1 1 0 0 1-1 1h-5v-6.5H10V21H4a1 1 0 0 1-1-1Z"/></svg>
+      Home
+    </a>
+    <a class="tabbar__item" href="category.html" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>
+      Category
+    </a>
+    <a class="tabbar__item" href="search.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+      Search
+    </a>
+    <a class="tabbar__item" href="cart.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3 4h2.2l2.3 11.2A2 2 0 0 0 9.5 17h8.7a2 2 0 0 0 2-1.6L22 8H6"/><circle cx="10" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>
+      Cart
+      <span class="badge-count" data-cart-badge aria-hidden="true">1</span>
+    </a>
+    <a class="tabbar__item" href="account.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.4 8-6.4S20 17 20 21"/></svg>
+      Account
+    </a>
+  </nav>
+</div>
+
+<script>
+(function () {
+  var n = 1;
+  try { var s = localStorage.getItem('tb_cart_count'); if (s !== null) n = parseInt(s, 10); } catch (e) {}
+  document.querySelectorAll('[data-cart-badge]').forEach(function (el) { el.textContent = String(n); el.hidden = n === 0; });
+  document.querySelectorAll('.addbtn').forEach(function (b) {
+    b.addEventListener('click', function () {
+      n += 1; try { localStorage.setItem('tb_cart_count', String(n)); } catch (e) {}
+      document.querySelectorAll('[data-cart-badge]').forEach(function (el) { el.textContent = String(n); el.hidden = false; });
+      b.style.background = 'var(--brand-strong)'; b.style.color = '#fff';
+    });
+  });
+  document.querySelectorAll('.rail__item').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.querySelectorAll('.rail__item').forEach(function (o) { o.classList.remove('is-on'); o.setAttribute('aria-pressed', 'false'); });
+      t.classList.add('is-on'); t.setAttribute('aria-pressed', 'true');
+    });
+  });
+})();
+</script>
+</body>
+</html>
